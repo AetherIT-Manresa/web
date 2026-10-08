@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AetherIT · Tecnologia per a pimes de Manresa</title>
+<meta name="description" content="AetherIT crea xats intel·ligents, automatitza tasques, desenvolupa aplicacions mòbils i reforça la seguretat de les pimes.">
+<link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#inici" aria-label="AetherIT, inici">
+      <img src="images/logo-icon.svg" alt="" width="40" height="40">
+      <span>AetherIT</span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav aria-label="Navegació principal">
+      <ul id="menu">
+        <li><a href="#inici">Inici</a></li>
+        <li><a href="#qui-som">Qui som?</a></li>
+        <li><a href="#serveis">Serveis</a></li>
+        <li><a href="#projectes">Projectes</a></li>
+        <li><a href="#equip">El nostre equip</a></li>
+        <li><a href="#tecnologies">Tecnologies</a></li>
+        <li><a href="#contacte">Contacte</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ========== INICI ========== -->
+<section id="inici" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-brand">
+        <img src="images/logo-icon.svg" alt="Logotip d'AetherIT" width="72" height="72">
+        <strong>AetherIT</strong>
+      </div>
+      <h1>La tecnologia treballa. Tu, dedica't al teu negoci.</h1>
+      <p class="lead">Som una empresa informàtica de Manresa. Creem xats intel·ligents, automatitzem tasques repetitives, desenvolupem aplicacions mòbils i protegim els accessos de la teva pime.</p>
+      <div class="actions">
+        <a class="btn" href="#serveis">Descobreix els nostres serveis</a>
+        <a class="btn ghost" href="#contacte">Demana pressupost</a>
+      </div>
+    </div>
+
+    <!-- Xat de demostració: és el que sabem fer -->
+    <div class="chat" aria-label="Demostració d'un xat intel·ligent">
+      <div class="chat-head"><span class="dot"></span> Assistent AetherIT <small>demo</small></div>
+      <div class="chat-body" id="chatBody" aria-live="polite">
+        <p class="msg bot">Hola! Sóc un exemple dels xats que fem per a les pimes. Pregunta'm alguna cosa:</p>
+      </div>
+      <div class="chat-opts" id="chatOpts"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUI SOM ========== -->
+<section id="qui-som" class="alt">
+  <div class="wrap two">
+    <div>
+      <h2>Qui som?</h2>
+      <p>AetherIT és una empresa de serveis informàtics situada a <b>Manresa</b>, al cor del Bages. Vam néixer el <b>2026</b> amb una missió clara: ajudar les petites i mitjanes empreses a utilitzar la tecnologia per treballar millor, estalviar temps i protegir la seva informació, sense complicacions.</p>
+      <p>Treballem amb comerços, gestories, clíniques i petits negocis de la comarca. Els nostres projectes van des d'un assistent virtual per a una web fins a una aplicació mòbil a mida o un sistema d'accés segur.</p>
+    </div>
+    <ul class="values">
+      <li><b>Senzillesa</b> Tecnologia que s'entén i que s'utilitza des del primer dia.</li>
+      <li><b>Proximitat</b> Som de la comarca i parlem amb tu, cara a cara.</li>
+      <li><b>Seguretat</b> La teva informació i la dels teus clients, protegida.</li>
+      <li><b>Innovació</b> Fem servir intel·ligència artificial on realment aporta valor.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== SERVEIS ========== -->
+<section id="serveis">
+  <div class="wrap">
+    <h2>Serveis</h2>
+    <p class="sub">Quatre especialitats per ajudar el teu negoci a guanyar temps i seguretat.</p>
+    <div class="cards">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+        <h3>Xats intel·ligents per a la web</h3>
+        <p>Assistents virtuals que responen les preguntes dels teus clients a qualsevol hora del dia.</p>
+        <ul class="list"><li>Atenció al client 24/7</li><li>Preguntes freqüents automàtiques</li><li>Integració a la teva web</li></ul>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <h3>Automatització de tasques</h3>
+        <p>Programes que fan sols les feines repetitives d'oficina, sense errors i amb menys temps.</p>
+        <ul class="list"><li>Organització de factures</li><li>Còpia de dades entre sistemes</li><li>Informes automàtics</li></ul>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        <h3>Disseny i desenvolupament d'apps</h3>
+        <p>Aplicacions mòbils a mida per a Android i iPhone, adaptades al que necessita el teu negoci.</p>
+        <ul class="list"><li>Apps per a Android i iPhone</li><li>Disseny pensat per a l'usuari</li><li>Manteniment i millores</li></ul>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/></svg>
+        <h3>Doble verificació de contrasenyes</h3>
+        <p>A més de la contrasenya, l'accés es confirma amb el mòbil, com fan els bancs.</p>
+        <ul class="list"><li>Protecció contra robatori de claus</li><li>Configuració per a tot l'equip</li><li>Formació bàsica en seguretat</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTES ========== -->
+<section id="projectes" class="alt">
+  <div class="wrap">
+    <h2>Projectes</h2>
+    <p class="sub">Alguns dels projectes que hem desenvolupat per a clients del Bages (ficticis).</p>
+    <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Galeria de projectes">
+      <div class="viewport">
+        <div class="track" id="track">
+
+          <article class="slide">
+            <div class="shot s1" role="img" aria-label="Captura del xat de la Ferreteria Bages"><i></i><i></i><i></i></div>
+            <div class="info">
+              <div class="client"><span class="clogo" style="--c:#E0701A">FB</span> Ferreteria Bages</div>
+              <h3>Assistent virtual per a la botiga online</h3>
+              <p>Xat que resol dubtes sobre productes, horaris i comandes, fins i tot fora de l'horari de la botiga.</p>
+              <ul class="chips"><li>Python</li><li>JavaScript</li><li>API REST</li></ul>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="shot s2" role="img" aria-label="Captura de l'automatització de factures de Gestoria Cardener"><i></i><i></i><i></i></div>
+            <div class="info">
+              <div class="client"><span class="clogo" style="--c:#16A34A">GC</span> Gestoria Cardener</div>
+              <h3>Automatització de factures</h3>
+              <p>Programa que llegeix, classifica i copia les dades de les factures al sistema de la gestoria.</p>
+              <ul class="chips"><li>Python</li><li>MySQL</li><li>Git / GitHub</li></ul>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="shot s3" role="img" aria-label="Captura de l'aplicació mòbil de Bages Fitness"><i></i><i></i><i></i></div>
+            <div class="info">
+              <div class="client"><span class="clogo" style="--c:#7C3AED">BF</span> Bages Fitness</div>
+              <h3>App mòbil per reservar classes</h3>
+              <p>Aplicació per a Android i iPhone amb reserves, avisos i seguiment de l'activitat dels socis.</p>
+              <ul class="chips"><li>React</li><li>Node.js</li><li>MySQL</li></ul>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="shot s4" role="img" aria-label="Captura del sistema de doble verificació de Clínica Sió"><i></i><i></i><i></i></div>
+            <div class="info">
+              <div class="client"><span class="clogo" style="--c:#0891B2">CS</span> Clínica Sió</div>
+              <h3>Doble verificació per a l'equip mèdic</h3>
+              <p>Accés protegit amb confirmació al mòbil per a historials i programes interns de la clínica.</p>
+              <ul class="chips"><li>Node.js</li><li>JavaScript</li><li>API REST</li></ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+      <div class="controls">
+        <button class="arrow" id="prev" aria-label="Projecte anterior">‹</button>
+        <div class="pager" id="pager" role="group" aria-label="Triar projecte"></div>
+        <button class="arrow" id="next" aria-label="Projecte següent">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EQUIP ========== -->
+<section id="equip">
+  <div class="wrap">
+    <h2>El nostre equip</h2>
+    <p class="sub">Quatre perfils que es complementen per cobrir tot el projecte.</p>
+    <div class="cards four">
+      <article class="card person">
+        <div class="avatar" style="--c:#3328C0">I</div>
+        <h3>Isaac</h3><p class="role">Project Manager</p>
+        <p>Coordina l'equip, planifica les tasques i s'encarrega del màrqueting i la comunicació.</p>
+        <ul class="chips"><li>Trello</li><li>Discord</li><li>Màrqueting</li></ul>
+      </article>
+      <article class="card person">
+        <div class="avatar" style="--c:#0E8FC0">T</div>
+        <h3>Tomàs</h3><p class="role">Frontend Developer</p>
+        <p>Dissenya i programa interfícies clares, ràpides i adaptades a qualsevol dispositiu.</p>
+        <ul class="chips"><li>HTML / CSS</li><li>JavaScript</li><li>React</li></ul>
+      </article>
+      <article class="card person">
+        <div class="avatar" style="--c:#7C3AED">M</div>
+        <h3>Mahamadou</h3><p class="role">Cybersecurity Specialist</p>
+        <p>Protegeix els accessos dels clients amb doble verificació i bones pràctiques de seguretat.</p>
+        <ul class="chips"><li>Seguretat</li><li>Xarxes</li><li>Màrqueting</li></ul>
+      </article>
+      <article class="card person">
+        <div class="avatar" style="--c:#16A34A">P</div>
+        <h3>Pau</h3><p class="role">Full Stack Developer</p>
+        <p>Construeix els xats, les automatitzacions i la part que no es veu de cada aplicació.</p>
+        <ul class="chips"><li>Python</li><li>Node.js</li><li>MySQL</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TECNOLOGIES ========== -->
+<section id="tecnologies" class="alt">
+  <div class="wrap">
+    <h2>Tecnologies</h2>
+    <p class="sub">Les eines amb què treballem cada dia.</p>
+    <div class="tech">
+      <div><h3>Frontend</h3><ul><li>HTML / CSS</li><li>JavaScript</li><li>React</li></ul></div>
+      <div><h3>Backend i automatització</h3><ul><li>Python</li><li>Node.js</li><li>API REST</li></ul></div>
+      <div><h3>Apps mòbils</h3><ul><li>Java (Android)</li><li>React</li></ul></div>
+      <div><h3>Dades i control de versions</h3><ul><li>MySQL</li><li>Git / GitHub</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACTE ========== -->
+<section id="contacte">
+  <div class="wrap two">
+    <div>
+      <h2>Contacte</h2>
+      <p>Explica'ns què necessita el teu negoci i et respondrem en menys d'un dia laborable.</p>
+    </div>
+    <form id="form" novalidate>
+      <label>Nom<input name="nom" autocomplete="name"><span class="err" data-for="nom"></span></label>
+      <label>Correu electrònic<input name="email" type="email" autocomplete="email"><span class="err" data-for="email"></span></label>
+      <label>Assumpte<input name="assumpte"><span class="err" data-for="assumpte"></span></label>
+      <label>Missatge<textarea name="missatge" rows="5"></textarea><span class="err" data-for="missatge"></span></label>
+      <button class="btn" type="submit">Enviar missatge</button>
+      <div id="result" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div>
+      <div class="brand"><img src="images/logo-icon.svg" alt="" width="36" height="36"><span>AetherIT</span></div>
+      <p>Carrer Exemple, 15<br>08240 Manresa (Barcelona)</p>
+    </div>
+    <div>
+      <p>Tel. <a href="tel:+34930000000">93 000 00 00</a><br><a href="mailto:info@aetherit.example">info@aetherit.example</a></p>
+    </div>
+    <div>
+      <p>Xarxes socials</p>
+      <p class="social"><a href="https://github.com/" rel="noopener">GitHub</a> <a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a> <a href="https://www.instagram.com/" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+  <p class="copy">© 2026 AetherIT — Tots els drets reservats.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
