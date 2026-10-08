@@ -5,16 +5,174 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AetherIT · Tecnologia per a pimes de Manresa</title>
 <meta name="description" content="AetherIT crea xats intel·ligents, automatitza tasques, desenvolupa aplicacions mòbils i reforça la seguretat de les pimes.">
-<link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== Paleta extreta del logotip d'AetherIT ===== */
+:root{
+  --bg:#070B1A; --surface:#0F1530; --surface2:#151C3D; --line:#232B55;
+  --ink:#E8ECFA; --muted:#A3AED6;
+  --indigo:#3328C0; --cyan:#4FC3F0; --cyan-dark:#2BA3D4;
+  --display:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --body:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.01em;margin:0 0 .5em}
+h2{font-size:clamp(1.9rem,3.8vw,2.7rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:92px 0}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+.sub{color:var(--muted);margin-bottom:38px;max-width:40em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+/* ===== Capçalera ===== */
+.site-header{position:sticky;top:0;z-index:20;background:rgba(7,11,26,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.35rem var(--display);letter-spacing:.02em}
+.site-header nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.site-header nav a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.96rem}
+.site-header nav a:hover{color:#fff}
+.site-header nav a.active{color:var(--cyan);background:rgba(79,195,240,.1)}
+.burger{display:none;background:none;border:1.5px solid var(--line);border-radius:8px;padding:8px 14px;font:500 1rem var(--body);color:var(--ink);cursor:pointer}
+
+/* ===== Botons ===== */
+.btn{display:inline-block;background:var(--cyan);color:#06101F;padding:14px 26px;border-radius:10px;border:2px solid var(--cyan);font:700 1rem var(--body);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--cyan-dark);border-color:var(--cyan-dark)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+
+/* ===== Inici ===== */
+.hero{padding:76px 0 96px;background:radial-gradient(900px 500px at 85% 0%,rgba(51,40,192,.55),transparent 70%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+.hero-brand{display:flex;align-items:center;gap:16px;margin-bottom:24px;font:800 1.7rem var(--display);letter-spacing:.03em}
+.hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);font-weight:800}
+.lead{font-size:1.18rem;color:var(--muted);max-width:34em;margin-top:18px}
+
+/* Xat de demostració */
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(51,40,192,.7)}
+.chat-head{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--surface2);border-bottom:1px solid var(--line);font-weight:700}
+.chat-head small{margin-left:auto;color:var(--muted);font-weight:400}
+.dot{width:10px;height:10px;border-radius:50%;background:#34D399}
+.chat-body{padding:18px;min-height:230px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.msg{margin:0;padding:10px 14px;border-radius:14px;max-width:85%;font-size:.98rem;line-height:1.5}
+.msg.bot{background:var(--surface2);border-bottom-left-radius:4px}
+.msg.user{background:var(--indigo);align-self:flex-end;border-bottom-right-radius:4px}
+.chat-opts{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}
+.chat-opts button{background:transparent;color:var(--cyan);border:1.5px solid var(--cyan);border-radius:99px;padding:7px 14px;font:500 .92rem var(--body);cursor:pointer}
+.chat-opts button:hover{background:var(--cyan);color:#06101F}
+
+/* ===== Qui som ===== */
+.values{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.values li{border-left:4px solid var(--cyan);padding:6px 0 6px 18px;color:var(--muted)}
+.values b{display:block;color:var(--ink);font:700 1.1rem var(--display)}
+
+/* ===== Targetes ===== */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+.alt .card{background:var(--bg)}
+.card p{color:var(--muted)}
+.ico{width:42px;height:42px;margin-bottom:14px;fill:none;stroke:var(--cyan);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:5px 0 5px 22px;position:relative;font-size:.97rem}
+.list li::before{content:"";position:absolute;left:0;top:13px;width:10px;height:2px;background:var(--cyan)}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:800 1.7rem var(--display);margin-bottom:16px}
+.person h3{margin-bottom:2px}
+.role{color:var(--cyan)!important;font-weight:700;margin-bottom:10px!important}
+.chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:.85rem;font-weight:500;padding:4px 12px;border-radius:99px;background:rgba(79,195,240,.12);color:var(--cyan)}
+
+/* ===== Carrusel ===== */
+.viewport{overflow:hidden;border-radius:18px;border:1px solid var(--line);background:var(--bg)}
+.track{display:flex;transition:transform .5s ease}
+.slide{flex:0 0 100%;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:28px;align-items:center}
+.shot{aspect-ratio:16/10;border-radius:12px;position:relative;overflow:hidden;background:var(--g)}
+.shot::before{content:"";position:absolute;left:6%;top:9%;width:88%;height:12%;border-radius:6px;background:rgba(255,255,255,.85)}
+.shot i{position:absolute;top:30%;height:54%;width:27%;border-radius:8px;background:rgba(255,255,255,.65)}
+.shot i:nth-child(1){left:6%}.shot i:nth-child(2){left:36.5%}.shot i:nth-child(3){left:67%}
+.s1{--g:linear-gradient(135deg,#F59E0B,#C2410C)}
+.s2{--g:linear-gradient(135deg,#34D399,#15803D)}
+.s3{--g:linear-gradient(135deg,#A78BFA,#4C1D95)}
+.s4{--g:linear-gradient(135deg,#4FC3F0,#3328C0)}
+.client{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:10px}
+.clogo{width:34px;height:34px;border-radius:9px;background:var(--c);color:#fff;display:grid;place-items:center;font:700 .85rem var(--display)}
+.info p{color:var(--muted)}
+.controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
+.arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);font-size:1.6rem;line-height:1;color:var(--ink);cursor:pointer}
+.arrow:hover{background:var(--cyan);border-color:var(--cyan);color:#06101F}
+.pager{display:flex;gap:10px}
+.pager button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);padding:0;cursor:pointer}
+.pager button[aria-current="true"]{background:var(--cyan);width:30px;border-radius:99px}
+
+/* ===== Tecnologies ===== */
+.tech{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.tech>div{border-top:3px solid var(--indigo);padding-top:14px}
+.tech ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tech li{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:500}
+
+/* ===== Formulari ===== */
+form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:500}
+input,textarea{font:inherit;width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+input.invalid,textarea.invalid{border-color:#F59E0B}
+.err{color:#FBBF24;font-size:.92rem;min-height:1.2em}
+.ok-msg{padding:16px;border-radius:10px;background:rgba(52,211,153,.14);color:#6EE7B7;font-weight:500}
+
+/* ===== Footer ===== */
+.site-footer{background:#04060F;border-top:1px solid var(--line);color:var(--muted);padding:56px 0 24px}
+.site-footer a{text-decoration:none;color:var(--ink)}
+.site-footer a:hover{color:var(--cyan)}
+.site-footer .brand{color:#fff;margin-bottom:12px}
+.foot{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.social{display:flex;gap:16px;flex-wrap:wrap}
+.copy{text-align:center;margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem}
+
+/* ===== Responsive ===== */
+@media (max-width:1000px){.cards.four,.tech{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  section{padding:60px 0}
+  .two,.hero-grid,.slide,.foot{grid-template-columns:1fr}
+  .burger{display:block}
+  .site-header nav ul{display:none;position:absolute;left:0;right:0;top:72px;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 24px 20px}
+  .site-header nav ul.open{display:flex}
+}
+@media (max-width:620px){.cards,.cards.four,.tech{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.track{transition:none}}
+</style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="0 0 100 100"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTplZjdkY2FjNC05NzkzLTRkMzYtOGExZS02NGE3ZDc5M2IwYzUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaBq6FCmHHSAuZHHlk+G00/4AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDowMmMwNzI0Zi05NTliLTQ0Y2YtODkzYS0wZmE0NGI2ZTZmZTJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNolWwbbjYy1lhPvTWKg6IrOwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggwSjBBnqAByuTC/OsijT+uTKHpbjznk04F08I9LlqtLGkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaCy/uh2T/69SfRt9YJs02NEAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCDm4gwDSmYl41+1yUnvb7KmIDx032cS84kP2qa10NROD2RuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBimZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmVmN2RjYWM0LTk3OTMtNGQzNi04YTFlLTY0YTdkNzkzYjBjNS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjFmZWZmMWIwLTNiNWEtNDEwYi04Njg5LTkyYmY3MTVjODE4MXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDBKMEGeoAHK5ML86yKNP65MoeluPOeTTgXTwj0uWq0saJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggV1RJtneA+03oIMISiUEoZKYGsOgroKW/OOBQ7IWpr2KiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggoGcxomdlp+LAAkjCaEUQ5vkcSOaLzZ4y6QCT8BAmQ1R0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQJEeApvaQHp5w1GFaNKbpqzTe0YO4WQ1S/7VECIEh0tR2soWtRoyI3eyHmSybEdVS+m5PuBbaVVuSRyXDCdSZFg=</c2pa:manifest></metadata>
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#05050F"/>
+      <stop offset="1" stop-color="#3328C0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="52" cy="48" r="44" fill="url(#lg)"/>
+  <circle cx="40" cy="60" r="31" fill="#fff"/>
+  <g fill="none" stroke="#4FC3F0" stroke-width="1.6" stroke-linecap="round">
+    <path d="M26 66a16 16 0 0 1 20-20"/>
+    <path d="M22 62a22 22 0 0 1 30-26"/>
+    <path d="M30 80a24 24 0 0 0 30-22"/>
+    <path d="M38 86a30 30 0 0 0 28-20"/>
+  </g>
+  <g fill="#4FC3F0">
+    <circle cx="26" cy="66" r="2"/><circle cx="46" cy="46" r="2"/>
+    <circle cx="22" cy="62" r="2"/><circle cx="52" cy="36" r="2"/>
+    <circle cx="60" cy="58" r="2"/><circle cx="66" cy="66" r="2"/>
+  </g>
+  <g fill="#1A2A8C"><circle cx="90" cy="26" r="3"/><circle cx="94" cy="40" r="3"/><circle cx="86" cy="12" r="3"/></g>
+</symbol></svg>
 
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="#inici" aria-label="AetherIT, inici">
-      <img src="images/logo-icon.svg" alt="" width="40" height="40">
+      <svg width="40" height="40" aria-hidden="true"><use href="#logo"/></svg>
       <span>AetherIT</span>
     </a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menú</button>
@@ -38,7 +196,7 @@
   <div class="wrap hero-grid">
     <div>
       <div class="hero-brand">
-        <img src="images/logo-icon.svg" alt="Logotip d'AetherIT" width="72" height="72">
+        <svg width="72" height="72" role="img" aria-label="Logotip d'AetherIT"><use href="#logo"/></svg>
         <strong>AetherIT</strong>
       </div>
       <h1>La tecnologia treballa. Tu, dedica't al teu negoci.</h1>
@@ -241,20 +399,164 @@
 <footer class="site-footer">
   <div class="wrap foot">
     <div>
-      <div class="brand"><img src="images/logo-icon.svg" alt="" width="36" height="36"><span>AetherIT</span></div>
+      <div class="brand"><svg width="36" height="36" aria-hidden="true"><use href="#logo"/></svg><span>AetherIT</span></div>
       <p>Carrer Exemple, 15<br>08240 Manresa (Barcelona)</p>
     </div>
     <div>
-      <p>Tel. <a href="tel:+34930000000">93 000 00 00</a><br><a href="mailto:info@aetherit.example">info@aetherit.example</a></p>
+      <p>Tel. 93 000 00 00<br>info@aetherit.example</p>
     </div>
     <div>
       <p>Xarxes socials</p>
-      <p class="social"><a href="https://github.com/" rel="noopener">GitHub</a> <a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a> <a href="https://www.instagram.com/" rel="noopener">Instagram</a></p>
+      <p class="social"><span>GitHub</span> <span>LinkedIn</span> <span>Instagram</span></p>
     </div>
   </div>
   <p class="copy">© 2026 AetherIT — Tots els drets reservats.</p>
 </footer>
 
-<script src="js/script.js"></script>
+<script>
+/* ===== 1. Menú mòbil ===== */
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+
+burger.addEventListener('click', () => {
+  const obert = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', obert);
+});
+menu.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ===== 2. Marcar la secció activa al menú ===== */
+const enllacos = [...menu.querySelectorAll('a')];
+const observador = new IntersectionObserver((entrades) => {
+  entrades.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      enllacos.forEach((a) =>
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entrada.target.id)
+      );
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('main section[id]').forEach((s) => observador.observe(s));
+
+/* ===== 3. Xat de demostració (secció Inici) ===== */
+// Cada pregunta té la seva resposta. Per afegir-ne una, afegeix una entrada aquí.
+const preguntes = {
+  'Què feu?': 'Creem xats intel·ligents, automatitzem tasques d\'oficina, desenvolupem apps mòbils i instal·lem doble verificació de contrasenyes.',
+  'On sou?': 'Som a Manresa, al Bages. Treballem sobretot amb pimes de la comarca.',
+  'Feu apps per a mòbil?': 'Sí! Dissenyem aplicacions a mida per a Android i iPhone.',
+  'Com us puc contactar?': 'Pots escriure\'ns des del formulari de contacte o a info@aetherit.example.'
+};
+const chatBody = document.getElementById('chatBody');
+const chatOpts = document.getElementById('chatOpts');
+
+function afegirMissatge(text, tipus) {
+  const p = document.createElement('p');
+  p.className = 'msg ' + tipus;
+  p.textContent = text; // textContent evita injectar HTML
+  chatBody.appendChild(p);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+Object.keys(preguntes).forEach((pregunta) => {
+  const boto = document.createElement('button');
+  boto.type = 'button';
+  boto.textContent = pregunta;
+  boto.addEventListener('click', () => {
+    afegirMissatge(pregunta, 'user');
+    setTimeout(() => afegirMissatge(preguntes[pregunta], 'bot'), 500);
+  });
+  chatOpts.appendChild(boto);
+});
+
+/* ===== 4. Carrusel de projectes ===== */
+const track = document.getElementById('track');
+const slides = track.children;
+const pager = document.getElementById('pager');
+let actual = 0;
+
+// Crea els punts de navegació
+[...slides].forEach((_, i) => {
+  const punt = document.createElement('button');
+  punt.setAttribute('aria-label', 'Anar al projecte ' + (i + 1));
+  punt.addEventListener('click', () => anarA(i));
+  pager.appendChild(punt);
+});
+
+function anarA(index) {
+  // Si passem de l'últim, tornem al primer (i al revés)
+  actual = (index + slides.length) % slides.length;
+  track.style.transform = `translateX(-${actual * 100}%)`;
+  [...pager.children].forEach((p, i) =>
+    p.setAttribute('aria-current', i === actual ? 'true' : 'false')
+  );
+  [...slides].forEach((s, i) => s.setAttribute('aria-hidden', i !== actual));
+}
+
+document.getElementById('next').addEventListener('click', () => anarA(actual + 1));
+document.getElementById('prev').addEventListener('click', () => anarA(actual - 1));
+document.getElementById('carousel').addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') anarA(actual + 1);
+  if (e.key === 'ArrowLeft') anarA(actual - 1);
+});
+
+// Lliscar amb el dit en mòbils
+let iniciX = 0;
+track.addEventListener('touchstart', (e) => { iniciX = e.touches[0].clientX; }, { passive: true });
+track.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].clientX - iniciX;
+  if (Math.abs(diff) > 50) anarA(actual + (diff < 0 ? 1 : -1));
+});
+
+anarA(0);
+
+/* ===== 5. Validació del formulari de contacte ===== */
+const form = document.getElementById('form');
+const resultat = document.getElementById('result');
+const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+// Mostra o esborra l'error d'un camp. Retorna true si el camp és vàlid.
+function marcar(camp, missatge) {
+  form.querySelector(`[data-for="${camp}"]`).textContent = missatge;
+  form.elements[camp].classList.toggle('invalid', Boolean(missatge));
+  return !missatge;
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nom = form.nom.value.trim();
+  const email = form.email.value.trim();
+  const assumpte = form.assumpte.value.trim();
+  const missatge = form.missatge.value.trim();
+
+  const valids = [
+    marcar('nom', nom ? '' : 'Escriu el teu nom.'),
+    marcar('email',
+      !email ? 'Escriu el teu correu electrònic.'
+      : !reEmail.test(email) ? 'El correu no és vàlid. Exemple: nom@empresa.cat'
+      : ''),
+    marcar('assumpte', assumpte ? '' : 'Indica l\'assumpte del missatge.'),
+    marcar('missatge', missatge.length >= 10 ? '' : 'Escriu un missatge de mínim 10 caràcters.')
+  ];
+
+  if (valids.includes(false)) {
+    resultat.textContent = '';
+    return;
+  }
+
+  // No s'envia a cap servidor: només mostrem la confirmació
+  resultat.innerHTML = '<div class="ok-msg"></div>';
+  resultat.firstChild.textContent = `Gràcies, ${nom}. Hem rebut el teu missatge i et respondrem aviat.`;
+  form.reset();
+});
+
+// Esborra l'error d'un camp quan l'usuari torna a escriure
+form.addEventListener('input', (e) => {
+  if (e.target.name) marcar(e.target.name, '');
+});
+</script>
 </body>
 </html>
