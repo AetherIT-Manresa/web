@@ -81,7 +81,8 @@ section{padding:92px 0}
 .list{list-style:none;margin:0;padding:0}
 .list li{padding:5px 0 5px 22px;position:relative;font-size:.97rem}
 .list li::before{content:"";position:absolute;left:0;top:13px;width:10px;height:2px;background:var(--cyan)}
-.avatar{width:72px;height:72px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:800 1.7rem var(--display);margin-bottom:16px}
+.avatar{width:96px;height:96px;border-radius:50%;background:var(--c);overflow:hidden;margin-bottom:16px}
+.avatar img{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
 .person h3{margin-bottom:2px}
 .role{color:var(--cyan)!important;font-weight:700;margin-bottom:10px!important}
 .chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
@@ -336,25 +337,25 @@ input.invalid,textarea.invalid{border-color:#F59E0B}
     <p class="sub">Quatre perfils que es complementen per cobrir tot el projecte.</p>
     <div class="cards four">
       <article class="card person">
-        <div class="avatar" style="--c:#3328C0">I</div>
+        <div class="avatar" style="--c:#3328C0"><img src="images/kowalski.png" alt="Isaac"></div>
         <h3>Isaac</h3><p class="role">Project Manager</p>
         <p>Coordina l'equip, planifica les tasques i s'encarrega del màrqueting i la comunicació.</p>
         <ul class="chips"><li>Trello</li><li>Discord</li><li>Màrqueting</li></ul>
       </article>
       <article class="card person">
-        <div class="avatar" style="--c:#0E8FC0">T</div>
+        <div class="avatar" style="--c:#0E8FC0"><img src="images/skipper.png" alt="Tomàs"></div>
         <h3>Tomàs</h3><p class="role">Frontend Developer</p>
         <p>Dissenya i programa interfícies clares, ràpides i adaptades a qualsevol dispositiu.</p>
         <ul class="chips"><li>HTML / CSS</li><li>JavaScript</li><li>React</li></ul>
       </article>
       <article class="card person">
-        <div class="avatar" style="--c:#7C3AED">M</div>
+        <div class="avatar" style="--c:#7C3AED"><img src="images/cabo.png" alt="Mahamadou"></div>
         <h3>Mahamadou</h3><p class="role">Cybersecurity Specialist</p>
         <p>Protegeix els accessos dels clients amb doble verificació i bones pràctiques de seguretat.</p>
         <ul class="chips"><li>Seguretat</li><li>Xarxes</li><li>Màrqueting</li></ul>
       </article>
       <article class="card person">
-        <div class="avatar" style="--c:#16A34A">P</div>
+        <div class="avatar" style="--c:#16A34A"><img src="images/rico.png" alt="Pau"></div>
         <h3>Pau</h3><p class="role">Full Stack Developer</p>
         <p>Construeix els xats, les automatitzacions i la part que no es veu de cada aplicació.</p>
         <ul class="chips"><li>Python</li><li>Node.js</li><li>MySQL</li></ul>
